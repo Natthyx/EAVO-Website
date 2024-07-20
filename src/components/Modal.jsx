@@ -7,7 +7,7 @@ const Modal = ({ isOpen, onClose }) => {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,10 +18,7 @@ const Modal = ({ isOpen, onClose }) => {
   const handleLastNameChange = (e) => setLastName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
-  const handleAmountChange = (e) => {
-    const value = e.target.value;
-    if (value >= 5) setAmount(value);
-  };
+  const handleAmountChange = (e) => setAmount(value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,9 +29,11 @@ const Modal = ({ isOpen, onClose }) => {
     try {
       // Perform any additional actions or validations if needed
       if (paymentFormRef.current) {
-        paymentFormRef.current.submitForm();
+        if (phoneNumber.length == 10) {
+          paymentFormRef.current.submitForm();
+          setSuccessMessage("Donation successful. Thank you for your support!");
+        } else setErrorMessage("Phone number must be 10 digits");
       }
-      setSuccessMessage("Donation successful. Thank you for your support!");
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
@@ -116,6 +115,8 @@ const Modal = ({ isOpen, onClose }) => {
               id="phoneNumber"
               className="border border-gray-300 rounded-md px-3 py-2 w-full"
               placeholder="Enter your phone number"
+              minLength={10}
+              maxLength={11}
               value={phoneNumber}
               onChange={handlePhoneNumberChange}
               required
@@ -132,7 +133,7 @@ const Modal = ({ isOpen, onClose }) => {
               placeholder="Enter the amount of money"
               value={amount}
               onChange={handleAmountChange}
-              min={1}
+              min={0}
               required
             />
           </div>

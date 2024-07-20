@@ -50,20 +50,16 @@ const PaymentForm = forwardRef(
         <input
           type="hidden"
           name="logo"
-          value="https://chapa.link/asset/images/chapa_swirl.svg"
+          value="https://trello.com/1/cards/66966cde07608681653a971c/attachments/66966ce558e8acfc063300b0/previews/66966ce658e8acfc063300bd/download/IMG_7988.jpg"
         />
         <input
           type="hidden"
           name="callback_url"
           value="https://example.com/callbackurl"
         />
-        <input
-          type="hidden"
-          name="return_url"
-          value="http://localhost:5173/thankyou"
-        />
+        {/* <input type="hidden" name="return_url" value="http://google.com" /> */}
         <input type="hidden" name="meta[title]" value="test" />
-        <button type="submit">Pay Now</button>
+        {/* <button type="submit">Pay Now</button> */}
       </form>
     );
   }
