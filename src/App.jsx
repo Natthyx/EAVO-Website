@@ -1,12 +1,18 @@
 import Header from "./components/Header";
 import Modal from "./components/Modal";
 import { useState } from "react";
+import VolunteerOpportunities from "./components/VolunteerOpportunities";
+import DonationInformation from "./components/DonationInformation";
+import UpcomingEvents from "./components/UpcomingEvents";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
       <Header />
+      <VolunteerOpportunities />
+      <DonationInformation />
+      <UpcomingEvents />
       <div className="flex items-center h-screen justify-end pr-4">
         <div className="fixed -left-10">
           <button
