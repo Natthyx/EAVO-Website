@@ -1,3 +1,4 @@
+import AboutUs from "./components/AboutUs";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
 import { useState } from "react";
@@ -29,6 +30,8 @@ function App() {
           </button>
         </div>
       </div>
+      
+        <AboutUs />
 
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
         <h2 className="text-2xl font-bold mb-4">Modal Title</h2>
