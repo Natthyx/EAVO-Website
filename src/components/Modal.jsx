@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import ReactDOM from "react-dom";
-import PaymentForm from "./PatmentForm";
+import PaymentForm from "./PaymentForm";
 
 const Modal = ({ isOpen, onClose }) => {
   const [firstName, setFirstName] = useState("");
