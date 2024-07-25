@@ -13,15 +13,16 @@ function App() {
       <VolunteerOpportunities />
       <DonationInformation />
       <UpcomingEvents />
-      <div className="flex items-center h-screen justify-end pr-4">
-        <div className="fixed -left-10">
+
+      <div className="flex items-center  justify-end pr-4 z-50">
+        <div className="fixed -left-10 top-1/2 transform -translate-y-1/2">
           <button
-            className="relative flex items-center bg-green-500 text-white px-4 py-2 rounded transition-transform duration-300 transform hover:scale-110 hover:bg-yellow-400 rotate-[270deg] overflow-hidden"
+            className="flex items-center bg-green-500 text-white px-4 py-2 rounded transition-transform duration-300 transform hover:scale-110 hover:bg-yellow-400 rotate-[270deg]"
             onClick={() => setOpenModal(true)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2 "
+              className="h-5 w-5 mr-2"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
