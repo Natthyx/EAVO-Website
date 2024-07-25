@@ -5,12 +5,21 @@ import { useState } from "react";
 import VolunteerOpportunities from "./components/VolunteerOpportunities";
 import DonationInformation from "./components/DonationInformation";
 import UpcomingEvents from "./components/UpcomingEvents";
+import HeroSection from "./components/HeroSection";
+import ContactUs from "./components/ContactUs";
+import Footer from "./components/Footer";
+import Impact from "./components/Impact";
+import OurMission from "./components/OurMission";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
       <Header />
+      <HeroSection />
+      <AboutUs />
+      <Impact />
+      <OurMission />
       <VolunteerOpportunities />
       <DonationInformation />
       <UpcomingEvents />
@@ -37,13 +46,12 @@ function App() {
           </button>
         </div>
       </div>
-      
-        <AboutUs />
-
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
         <h2 className="text-2xl font-bold mb-4">Modal Title</h2>
         <p>This is the modal content.</p>
       </Modal>
+      <ContactUs />
+      <Footer />
     </>
   );
 }

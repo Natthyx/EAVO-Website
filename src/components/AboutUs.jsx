@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import img1 from '../assets/about-us1.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +20,7 @@ const AboutUs = () => {
   };
 
   return (
-    <div className='about-us'>
+    <div id='about' className='about-us'>
       <div className='container mx-auto p-4 flex items-center'>
         <img src={img1} alt="" className="w-1/2 h-1/2 rounded-md" />
         <div className='w-1/2 pl-4'>
