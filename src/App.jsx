@@ -1,21 +1,24 @@
-import AboutUs from "./components/AboutUs";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
 import { useState } from "react";
+import HomePage from "./pages/HomePage";
+import UpcomingEvents from "./components/UpcomingEvents";
 import VolunteerOpportunities from "./components/VolunteerOpportunities";
 import DonationInformation from "./components/DonationInformation";
-import UpcomingEvents from "./components/UpcomingEvents";
+import AboutUs from "./components/AboutUs";
+
+import AdminPage from "./adminPages/AdminPage";
+import OurProgramsForm from "./adminPages/OurProgramsForm";
+import UpcomingEventsForm from "./adminPages/UpcomingEventsForm";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
-  return (
-    <>
-      <Header />
-      <VolunteerOpportunities />
-      <DonationInformation />
-      <UpcomingEvents />
 
-      <div className="flex items-center  justify-end pr-4 z-50">
+  return (
+    <Router>
+      <Header />
+      <div className="flex items-center justify-end pr-4 z-50">
         <div className="fixed -left-10 top-1/2 transform -translate-y-1/2">
           <button
             className="flex items-center bg-green-500 text-white px-4 py-2 rounded transition-transform duration-300 transform hover:scale-110 hover:bg-yellow-400 rotate-[270deg]"
@@ -37,14 +40,25 @@ function App() {
           </button>
         </div>
       </div>
-      
-        <AboutUs />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/volunteer" element={<VolunteerOpportunities />} />
+        <Route path="/donation" element={<DonationInformation />} />
+        <Route path="/events" element={<UpcomingEvents />} />
+        <Route path="/admin" element={<AdminPage />}>
+          <Route path="add-event" element={<UpcomingEventsForm />} />
+          <Route path="add-program" element={<OurProgramsForm />} />
+        </Route>
+        {/* Add more routes as needed */}
+      </Routes>
 
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
         <h2 className="text-2xl font-bold mb-4">Modal Title</h2>
         <p>This is the modal content.</p>
       </Modal>
-    </>
+    </Router>
   );
 }
 
