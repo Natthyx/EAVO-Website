@@ -1,9 +1,11 @@
-import React from "react";
+import pic from '../assets/voluteer.png';
 
 const VolunteerOpportunities = () => {
   return (
+    <div id="get-involved">
+    <h1 className="w-full text-center font-bold text-3xl mt-5 mb-2 font-serif">Get Involved</h1>
     <div className="w-full flex justify-center">
-      <div className="flex flex-col md:flex-row bg-gray-200 w-[90%] m-10 rounded-2xl overflow-hidden">
+      <div className="flex flex-col md:flex-row bg-gray-200 w-[90%] m- rounded-2xl overflow-hidden">
         <div className="flex-1 flex flex-col justify-center items-center p-10">
           <h1 className="text-2xl text-center mb-5">Volunteer Opportunities</h1>
           <p className="text-center pb-5">
@@ -43,11 +45,12 @@ const VolunteerOpportunities = () => {
         <div className="flex-none md:flex-1">
           <img
             className="h-full rounded-3xl"
-            src="src/assets/image.png"
+            src={pic}
             alt="Volunteer"
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };
