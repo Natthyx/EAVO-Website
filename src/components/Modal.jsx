@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
 import ReactDOM from "react-dom";
-import PaymentForm from "./PatmentForm";
+import PaymentForm from "./PaymentForm";
 
 const Modal = ({ isOpen, onClose }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ const Modal = ({ isOpen, onClose }) => {
   const handleLastNameChange = (e) => setLastName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
-  const handleAmountChange = (e) => setAmount(value);
+  const handleAmountChange = (e) => setAmount(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ const Modal = ({ isOpen, onClose }) => {
 
   return ReactDOM.createPortal(
     <div
-      className="fixed inset-0 bg-slate-500 bg-opacity-50 flex justify-center items-center"
+      className="fixed inset-0 bg-slate-500 bg-opacity-50 flex justify-center items-center z-50"
       onClick={onClose}
     >
       <div
