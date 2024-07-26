@@ -1,13 +1,11 @@
-// routes/events.js
 const express = require('express');
 const router = express.Router();
-const Event = require('../models/event');
 const {
   getAllEvents,
   createEvent,
   getEventById,
   updateEvent,
-  deleteEvent
+  deleteEvent,
 } = require('../controllers/eventController');
 
 // Get all events

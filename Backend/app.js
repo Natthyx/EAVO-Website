@@ -4,6 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const eventRoutes = require("./routes/events");
 const programRoutes = require("./routes/programs");
+const contactRoutes = require("./routes/contact");
+const newsletterRoute =require('./routes/newsletter');
 require("dotenv").config();
 
 const mongoUri = process.env.MONGO_URL;
@@ -22,6 +24,9 @@ mongoose
 // Routes
 app.use("/events", eventRoutes);
 app.use("/programs", programRoutes);
+app.use("/contact",contactRoutes);
+app.use("/subscribe",newsletterRoute)
 
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

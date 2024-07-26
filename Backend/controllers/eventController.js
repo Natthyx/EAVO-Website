@@ -16,10 +16,14 @@ const createEvent = async (req, res) => {
     picture: req.body.picture,
     title: req.body.title,
     description: req.body.description,
-    date: req.body.date
+    date: req.body.date,
+    isMain: req.body.isMain || false,
   });
 
   try {
+    if (event.isMain) {
+      await Event.updateMany({ isMain: true }, { isMain: false });
+    }
     const newEvent = await event.save();
     res.status(201).json(newEvent);
   } catch (err) {
@@ -42,9 +46,14 @@ const getEventById = async (req, res) => {
 const updateEvent = async (req, res) => {
   try {
     const event = await Event.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
+      new: true,
     });
     if (!event) return res.status(404).json({ message: 'Event not found' });
+
+    if (event.isMain) {
+      await Event.updateMany({ isMain: true, _id: { $ne: event._id } }, { isMain: false });
+    }
+
     res.json(event);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -67,5 +76,5 @@ module.exports = {
   createEvent,
   getEventById,
   updateEvent,
-  deleteEvent
+  deleteEvent,
 };

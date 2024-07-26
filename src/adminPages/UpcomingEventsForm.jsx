@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const UpcomingEventsForm = () => {
@@ -12,6 +12,7 @@ const UpcomingEventsForm = () => {
     title: "",
     description: "",
     date: "",
+    isMain: false,
   });
   const [currentEvent, setCurrentEvent] = useState(null);
 
@@ -19,14 +20,11 @@ const UpcomingEventsForm = () => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get("http://localhost:3000/events");
-        console.log("API response:", response.data);
-
         if (Array.isArray(response.data)) {
           setEvents(response.data);
         } else {
           throw new Error("Data is not an array");
         }
-
         setLoading(false);
       } catch (error) {
         setError("Failed to fetch events");
@@ -75,12 +73,13 @@ const UpcomingEventsForm = () => {
       title: "",
       description: "",
       date: "",
+      isMain: false,
     });
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewEvent({ ...newEvent, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setNewEvent({ ...newEvent, [name]: type === "checkbox" ? checked : value });
   };
 
   const handleSubmit = async (e) => {
@@ -110,7 +109,9 @@ const UpcomingEventsForm = () => {
         title: "",
         description: "",
         date: "",
+        isMain: false,
       });
+      setCurrentEvent(null);
     } catch (error) {
       console.error("Error handling event:", error);
       setError("Failed to handle event");
@@ -248,19 +249,36 @@ const UpcomingEventsForm = () => {
                   required
                 />
               </div>
+              <div>
+                <label
+                  htmlFor="isMain"
+                  className="block text-gray-700 font-bold"
+                >
+                  Main Event
+                </label>
+                <input
+                  type="checkbox"
+                  id="isMain"
+                  name="isMain"
+                  className="mr-2 leading-tight"
+                  checked={newEvent.isMain}
+                  onChange={handleChange}
+                />
+                <span className="text-gray-600">Set as main event</span>
+              </div>
               <div className="mt-4 flex justify-end space-x-2">
                 <button
                   type="submit"
                   className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
-                  {currentEvent ? "Update Event" : "Add Event"}
+                  Submit
                 </button>
                 <button
                   type="button"
                   onClick={handleCloseAddEventForm}
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
                 >
-                  Close
+                  Cancel
                 </button>
               </div>
             </form>
@@ -341,19 +359,36 @@ const UpcomingEventsForm = () => {
                   required
                 />
               </div>
+              <div>
+                <label
+                  htmlFor="isMain"
+                  className="block text-gray-700 font-bold"
+                >
+                  Main Event
+                </label>
+                <input
+                  type="checkbox"
+                  id="isMain"
+                  name="isMain"
+                  className="mr-2 leading-tight"
+                  checked={newEvent.isMain}
+                  onChange={handleChange}
+                />
+                <span className="text-gray-600">Set as main event</span>
+              </div>
               <div className="mt-4 flex justify-end space-x-2">
                 <button
                   type="submit"
                   className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
-                  Update Event
+                  Update
                 </button>
                 <button
                   type="button"
                   onClick={handleCloseUpdateForm}
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
                 >
-                  Close
+                  Cancel
                 </button>
               </div>
             </form>

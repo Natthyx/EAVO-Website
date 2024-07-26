@@ -3,20 +3,24 @@ const mongoose = require('mongoose');
 const EventSchema = new mongoose.Schema({
   picture: {
     type: String,
-    required: true
+    required: true,
   },
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    required: true
-  }
+    required: true,
+  },
+  isMain: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('Event', EventSchema);

@@ -10,7 +10,7 @@ import ContactUs from "../components/ContactUs";
 import Footer from "../components/Footer";
 
 const HomePage = () => (
-  <>
+  <div>
     <HeroSection />
     <AboutUs />
     <Impact />
@@ -18,9 +18,9 @@ const HomePage = () => (
     <VolunteerOpportunities />
     <DonationInformation />
     <UpcomingEvents />
-    <ContactUs />
+    <ContactUs/>
     <Footer />
-  </>
+  </div>
 );
 
 export default HomePage;
