@@ -15,7 +15,9 @@ import AboutUs from "./components/AboutUs";
 import AdminPage from "./adminPages/AdminPage";
 import OurProgramsForm from "./adminPages/OurProgramsForm";
 import UpcomingEventsForm from "./adminPages/UpcomingEventsForm";
-
+import WomenTraining from "./pages/WomenTraining";
+import HealthCare from './pages/Healthcare';
+import ChildSupport from "./pages/ChildSupport";
 const DonateButton = () => {
   const location = useLocation();
 
@@ -62,7 +64,11 @@ function App() {
         <Route path="/volunteer" element={<VolunteerOpportunities />} />
         <Route path="/donation" element={<DonationInformation />} />
         <Route path="/events" element={<UpcomingEvents />} />
+        <Route path="/WomenTraining" element={<WomenTraining />} />
+        <Route path="/ChildSupport" element={<ChildSupport />} />
+        <Route path="/HealthCare" element={<HealthCare />} />
         <Route path="/admin" element={<AdminPage />}>
+
           <Route path="add-event" element={<UpcomingEventsForm />} />
           <Route path="add-program" element={<OurProgramsForm />} />
         </Route>
