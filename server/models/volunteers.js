@@ -16,6 +16,16 @@ const volunteerSchema = new mongoose.Schema({
     },
     task: {
         type: Array
+    },
+    phone: {
+        type: String
+    },
+    postalCode: {
+        type: String
+    },
+    country: {
+        type: String,
+        default: "Ethiopia"
     }
 }, { timestamps: true });
 

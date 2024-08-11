@@ -6,6 +6,7 @@ import UserController from "../controllers/userController.js";
 import Verification from "../middlewares/verifications.js";
 import EventHandler from "../controllers/eventController.js";
 import ProgramHandler from "../controllers/programController.js";
+import VolunteerController from "../controllers/volunteers.js";
 dotenv.config()
 
 
@@ -59,6 +60,10 @@ export default function injectRoutes(app) {
         UserController.contactList
     )
     // volunteer list
+    app.post('/eavo/volunteers/', VolunteerController.AddVolunteer)
+    app.get('/eavo/volunteers/get-all', VolunteerController.GetAllVolunteers)
+    app.get('/eavo/volunteers/', VolunteerController.GetVolunteer)
+
     app.get('/eavo/contactlist',
         Verification.VerifyLogin,
         UserController.GetAllContactList)
