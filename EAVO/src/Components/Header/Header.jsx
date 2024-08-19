@@ -91,7 +91,7 @@ const Header = () => {
               />
             </button>
             {dropdownOpen && (
-              <div className="absolute mt-2 w-48 font-semibold  bg-orange-300 text-black rounded shadow-lg">
+              <div className="absolute mt-2 w-48 font-semibold  bg-orange-300 text-black rounded shadow-lg z-50">
                 <Link
                   to="/WomenTraining"
                   className="block px-4 py-2 hover:bg-gray-200"
